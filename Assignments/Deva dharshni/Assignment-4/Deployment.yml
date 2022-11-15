@@ -1,0 +1,18 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: flask-job-portal-1
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      k8s-app: flask-job-portal-1
+  template:
+    metadata:
+      labels:
+        k8s-app: flask-job-portal-1
+    spec:
+      containers:
+      - image: au.icr.io/job-portal-v1/repo1:job-portal-main
+        imagePullPolicy: IfNotPresent
+        name: flask-job-portal-1
